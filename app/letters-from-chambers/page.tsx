@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CategoryCards, ChamberVerticalCards, LetterCards, NewsletterSignup } from "@/components/Letters";
 import { SectionHeading } from "@/components/SectionHeading";
-import { lettersBrand } from "@/lib/content";
+import { lettersBrand, sampleLetters } from "@/lib/content";
 
 export const metadata = {
   title: "Letters from Chambers — Scholar in Chambers",
@@ -20,7 +20,7 @@ export default function LettersFromChambersPage() {
           The chamber is not merely an office. It is a place of interpretation, judgment, discipline, and public guidance: a room where disputes are understood, risks are named, society is read, and law is translated into usable clarity.
         </p>
         <div className="hero-actions">
-          <Link className="button primary" href="#letter-archive">Read the Latest Letter</Link>
+          <Link className="button primary" href={`/letters-from-chambers/${sampleLetters[0].slug}`}>Read the Latest Letter</Link>
           <Link className="button secondary" href="#subscribe">Subscribe to Letters</Link>
         </div>
       </div>
@@ -68,8 +68,8 @@ export default function LettersFromChambersPage() {
       </section>
 
       <section className="content-section">
-        <SectionHeading eyebrow="Sample archive" title="Letters prepared for the public desk">
-          Placeholder titles for the first body of public correspondence from chambers.
+        <SectionHeading eyebrow="Archive" title="Latest Letters from Chambers">
+          The first body of public correspondence from chambers, each prepared as a serious legal-intellectual letter.
         </SectionHeading>
         <LetterCards />
       </section>

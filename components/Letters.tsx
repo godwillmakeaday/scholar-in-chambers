@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { futureChambers, letterCategories, lettersBrand, sampleLetters, site } from "@/lib/content";
+import { futureChambers, letterCategories, lettersBrand, sampleLetters } from "@/lib/content";
 
 export function CategoryCards() {
   return (
@@ -20,14 +20,16 @@ export function LetterCards({ limit }: { limit?: number }) {
   return (
     <div className="letter-archive-grid" id="letter-archive">
       {list.map((letter) => (
-        <article className="letter-card" key={letter.title}>
-          <div>
-            <p className="letter-meta">{letter.category} · {letter.readTime}</p>
-            <h3>{letter.title}</h3>
-            <p>{letter.excerpt}</p>
-          </div>
-          <span className="letter-status">{letter.status}</span>
-        </article>
+        <Link className="letter-card linked-card" href={`/letters-from-chambers/${letter.slug}`} key={letter.slug}>
+          <article>
+            <div>
+              <p className="letter-meta">{letter.category} · {letter.readTime}</p>
+              <h3>{letter.title}</h3>
+              <p>{letter.excerpt}</p>
+            </div>
+            <span className="letter-status">{letter.status}</span>
+          </article>
+        </Link>
       ))}
     </div>
   );
@@ -81,7 +83,10 @@ export function LettersHomeSection() {
         <p className="large-copy">{lettersBrand.subtitle}</p>
         <p>{lettersBrand.summary}</p>
         <p className="architecture-line">{lettersBrand.architecture}</p>
-        <Link className="button primary" href="/letters-from-chambers">Enter Letters from Chambers</Link>
+        <div className="hero-actions">
+          <Link className="button primary" href="/letters-from-chambers">Enter Letters from Chambers</Link>
+          <Link className="button secondary" href={`/letters-from-chambers/${sampleLetters[0].slug}`}>Read latest letter</Link>
+        </div>
       </div>
       <aside className="letters-home-card" aria-label="Letters from Chambers identity note">
         <p>Paul Magaji Brand</p>

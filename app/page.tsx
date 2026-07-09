@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ChamberCards, EssayCards } from "@/components/Cards";
-import { LettersHomeSection } from "@/components/Letters";
+import { LetterCards, LettersHomeSection } from "@/components/Letters";
 import { SectionHeading } from "@/components/SectionHeading";
 import { doctrines, offerings, site } from "@/lib/content";
 
@@ -36,6 +36,16 @@ export default function Home() {
       </section>
 
       <LettersHomeSection />
+
+      <section className="content-section latest-letters-section">
+        <SectionHeading eyebrow="Latest correspondence" title="Latest Letters from Chambers">
+          The first public letters now have individual archive pages, so the correspondence desk can grow as a living legal-intellectual newsletter.
+        </SectionHeading>
+        <LetterCards limit={3} />
+        <div className="section-action">
+          <Link className="button secondary" href="/letters-from-chambers">View full correspondence archive</Link>
+        </div>
+      </section>
 
       <section className="content-section">
         <SectionHeading eyebrow="The rooms" title="Four chambers of thought">

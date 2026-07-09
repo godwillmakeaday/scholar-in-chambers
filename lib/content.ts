@@ -1,3 +1,5 @@
+import { letters as archiveLetters } from "./letters";
+
 export const site = {
   name: "Scholar in Chambers",
   strapline: "Legal thought, public meaning, and institutional imagination from the desk of a lawyer-scholar.",
@@ -157,56 +159,7 @@ export const letterCategories = [
   },
 ];
 
-export const sampleLetters = [
-  {
-    title: "Letter to the Citizen Facing a Police Invitation",
-    category: "Citizens’ Legal Notes",
-    excerpt:
-      "A calm note on fear, preparation, documentation, dignity, and the wisdom of seeking proper legal guidance before a small issue becomes a larger danger.",
-    readTime: "6 min read",
-    status: "Coming Soon",
-  },
-  {
-    title: "Letter to the Business Owner Who Signs Without Reading",
-    category: "Business & Contracts",
-    excerpt:
-      "A warning from chambers on signatures, obligations, clauses, informal trust, and the hidden cost of treating documents as a formality.",
-    readTime: "7 min read",
-    status: "Coming Soon",
-  },
-  {
-    title: "Letter to the Young Lawyer Learning Judgment",
-    category: "Young Lawyers",
-    excerpt:
-      "A reflection on the difference between knowing law, sounding legal, reading people, preserving credibility, and exercising disciplined judgment.",
-    readTime: "8 min read",
-    status: "Coming Soon",
-  },
-  {
-    title: "Letter to the Family Holding Land Without Records",
-    category: "Land & Property",
-    excerpt:
-      "A practical public note on memory, boundaries, witnesses, succession, family meetings, and the tragedy of undocumented ownership.",
-    readTime: "6 min read",
-    status: "Coming Soon",
-  },
-  {
-    title: "Letter to the Public Officer and the Burden of Power",
-    category: "Governance & Public Order",
-    excerpt:
-      "A chamber reflection on authority as responsibility, public office as restraint, and power as something that must answer to dignity.",
-    readTime: "9 min read",
-    status: "Coming Soon",
-  },
-  {
-    title: "Letter to the Client Who Thinks Law Begins in Court",
-    category: "Law & Society",
-    excerpt:
-      "An explanation of prevention, records, negotiation, correspondence, documentation, and why court is often the late stage of legal life.",
-    readTime: "7 min read",
-    status: "Coming Soon",
-  },
-];
+export const sampleLetters = archiveLetters;
 
 export const futureChambers = [
   {

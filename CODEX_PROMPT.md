@@ -1,79 +1,93 @@
-# Codex Prompt: Upgrade Scholar in Chambers with Letters from Chambers
+# Codex Prompt — Scholar in Chambers 2.1
 
-You are working on an existing Next.js/Vercel project called Scholar in Chambers.
+You are working on an existing Vercel/Next.js website for:
 
-Do not rebuild from scratch. Preserve the premium chamber/archive identity, colors, typography direction, layout language, and serious legal-intellectual tone.
+**Scholar in Chambers**
 
-This upgrade adds a connected brand section:
+This website is part of the wider **Paul Magaji** intellectual and professional brand.
 
-## Letters from Chambers
+## Task
 
-Positioning line:
+Maintain and extend the existing website as a premium legal-intellectual platform. Do not redesign from scratch. Preserve the current look, feel, colors, typography direction, layout language, chamber-like atmosphere, and serious public tone.
 
-> Public letters from a lawyer’s desk on law, society, business, justice, and institutions.
+## Current architecture
 
-Core architecture:
-
-```text
-Paul Magaji Brand
-→ Scholar in Chambers
-→ Letters from Chambers
+Paul Magaji Brand  
+→ Scholar in Chambers  
+→ Letters from Chambers  
 → Future specialist chambers
-```
 
-Meaning:
+Scholar in Chambers is the lawyer as thinker.
+Letters from Chambers is the lawyer as correspondent.
 
-- Scholar in Chambers = the lawyer as thinker.
-- Letters from Chambers = the lawyer as correspondent.
-- Future specialist chambers = later editorial verticals, not separate law firms or institutions yet.
+## Current routes
 
-Important supporting line:
+- `/`
+- `/chambers`
+- `/essays`
+- `/letters-from-chambers`
+- `/letters-from-chambers/[slug]`
+- `/manifesto`
+- `/about`
+- `/contact`
 
-> Scholar in Chambers gives depth. Letters from Chambers gives continuity. Specialist Chambers gives expansion.
+## Letters archive engine
 
-## Required route
+Letters are stored in `lib/letters.ts`.
 
-Create or preserve:
+Each letter should have:
 
-```text
-/letters-from-chambers
-```
+- title
+- slug
+- category
+- excerpt
+- date
+- reading time
+- status
+- salutation
+- content sections
 
-The page should present Letters from Chambers as:
+When adding a new letter:
 
-1. A newsletter
-2. A public correspondence desk
-3. A recurring legal-intellectual letter series
-4. A future archive of letters on law, society, business, justice, citizenship, institutions, and public order
+1. Add it to the `letters` array in `lib/letters.ts`.
+2. Use a clean slug.
+3. Keep the tone serious, calm, legal-intellectual, public-facing, and chamber-like.
+4. Avoid casual blog language.
+5. Avoid aggressive marketing language.
+6. Preserve the editorial disclaimer.
 
-## Sections to maintain
+## Tone words
 
-- Hero section with CTAs
-- What It Is
-- The Chamber as a Public Desk
-- Newsletter subscription placeholder, no backend unless a backend exists
-- Letter Categories
-- Sample Letter Archive
-- Future Specialist Chambers
-- Editorial Note: public legal education only, not a substitute for formal legal advice
+Use language such as:
 
-## Components to use or refine
+- correspondence
+- chamber
+- public desk
+- legal reflection
+- civic guidance
+- institutional memory
+- judgment
+- dignity
+- society
+- law
+- justice
+- interpretation
+- evidence
+- public order
 
-- `components/Letters.tsx`
-- `CategoryCards`
-- `LetterCards`
-- `NewsletterSignup`
-- `ChamberVerticalCards`
-- `LettersHomeSection`
+## Editorial disclaimer
 
-## Technical rules
+Every letter page should keep this note:
 
-- No unnecessary packages
-- No external APIs
-- No backend dependency for subscription placeholder
-- Preserve existing Scholar in Chambers pages
-- Add Letters from Chambers to navigation and footer
-- Ensure mobile responsiveness
-- Ensure `npm run build` passes in a normal Vercel/Node environment
+“Letters from Chambers is for public legal education, institutional reflection, and civic guidance. It is not a substitute for formal legal advice on a specific matter.”
 
-Deliver a clean commit-ready upgrade.
+## Technical requirements
+
+- Use the existing project structure.
+- No external APIs.
+- No unnecessary packages.
+- No backend unless specifically requested.
+- Preserve mobile responsiveness.
+- Preserve Scholar in Chambers as the main intellectual house.
+- Do not rename the website to Letters from Chambers.
+- Keep Letters from Chambers visibly connected to Scholar in Chambers and the Paul Magaji brand.

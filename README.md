@@ -1,66 +1,61 @@
 # Scholar in Chambers
 
-A premium personal-intellectual website for legal thought, public meaning, civic doctrine, essays, institutional imagination, and serious public correspondence.
+A premium Next.js website for the Paul Magaji intellectual and professional brand.
 
-## Upgrade included
+## Current stage
 
-This version adds **Letters from Chambers** as a connected brand section under the wider Paul Magaji intellectual and professional brand.
+**Scholar in Chambers 2.1 — Letters from Chambers Archive Engine**
 
-Brand architecture:
+The site now treats **Scholar in Chambers** as the intellectual house and **Letters from Chambers** as the recurring public correspondence/newsletter arm.
 
-```text
-Paul Magaji Brand
-→ Scholar in Chambers
-→ Letters from Chambers
-→ Future specialist chambers
-```
+## Added in this upgrade
 
-New route:
+- `/letters-from-chambers` archive landing page
+- Individual letter routes under `/letters-from-chambers/[slug]`
+- Reusable letter data model in `lib/letters.ts`
+- Six starter public letter pages
+- Latest Letters section on the homepage
+- Linked archive cards
+- Breadcrumbs, reading time, category labels, editorial note, and previous/next navigation
+- Newsletter placeholder block under each letter
+- `.npmrc` registry setting and Node `22.x` engine for smoother Vercel deployment
 
-```text
-/letters-from-chambers
-```
+## Starter letters
 
-The new page includes:
+1. Letter to the Citizen Facing a Police Invitation
+2. Letter to the Business Owner Who Signs Without Reading
+3. Letter to the Young Lawyer Learning Judgment
+4. Letter to the Family Holding Land Without Records
+5. Letter to the Public Officer and the Burden of Power
+6. Letter to the Client Who Thinks Law Begins in Court
 
-- Hero section
-- What It Is section
-- Chamber as Public Desk section
-- Newsletter subscription placeholder
-- Letter category cards
-- Sample letter archive
-- Future specialist chambers section
-- Editorial/legal education disclaimer
-
-## Local setup
+## Local development
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open the local URL shown in the terminal.
-
-## Deploy on Vercel
+## Production build
 
 ```bash
-npm install
 npm run build
-vercel
 ```
 
-On Termux, if `npm run build` fails because of Next.js SWC/Android issues, push to GitHub and let Vercel build remotely.
+## Termux / Vercel note
 
-## What to edit first
+If local builds fail in Termux because of Next.js native compiler issues, push to GitHub and let Vercel build online.
 
-- `lib/content.ts` — change essay titles, letter titles, categories, contact email, and platform copy.
-- `app/page.tsx` — homepage structure.
-- `app/letters-from-chambers/page.tsx` — Letters from Chambers page.
-- `components/Letters.tsx` — letter cards, categories, newsletter placeholder, specialist chambers.
-- `app/globals.css` — full visual design.
+Recommended deployment flow:
 
-## Brand direction
+```bash
+git add .
+git commit -m "Add Letters from Chambers archive engine"
+git push
+```
 
-Scholar in Chambers should feel like a premium chamber archive, not a casual blog: legal, literary, restrained, thoughtful, civic, and institution-minded.
+Vercel should redeploy automatically.
 
-Letters from Chambers should feel like a serious legal-intellectual newsletter: correspondence, public desk, legal reflection, civic guidance, institutional memory, judgment, dignity, society, law, justice, and interpretation.
+## Brand principle
+
+Scholar in Chambers gives depth. Letters from Chambers gives continuity. Specialist Chambers gives expansion.
