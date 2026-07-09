@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { futureChambers, letterCategories, lettersBrand, sampleLetters } from "@/lib/content";
+import { archiveFilters, editorialNoteFromChambers, featuredLetter, publicationRhythm } from "@/lib/letters";
 
 export function CategoryCards() {
   return (
@@ -14,6 +15,59 @@ export function CategoryCards() {
   );
 }
 
+export function ArchiveFilterRow() {
+  return (
+    <div className="archive-filter-row" aria-label="Letters archive category filters">
+      {archiveFilters.map((filter, index) => (
+        <button className={index === 0 ? "archive-filter active" : "archive-filter"} type="button" key={filter}>
+          {filter}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+export function FeaturedIssue() {
+  return (
+    <section className="featured-issue-panel" aria-labelledby="featured-issue-title">
+      <div className="featured-issue-copy">
+        <p className="eyebrow">Latest from Chambers</p>
+        <div className="issue-label-row">
+          <span>{featuredLetter.issueNumber}</span>
+          <span>{featuredLetter.publicationStatus}</span>
+          <span>{featuredLetter.publicationType}</span>
+        </div>
+        <h2 id="featured-issue-title">{featuredLetter.title}</h2>
+        <p>{featuredLetter.excerpt}</p>
+        <p className="author-line">{featuredLetter.authorLine}</p>
+        <div className="hero-actions">
+          <Link className="button primary" href={`/letters-from-chambers/${featuredLetter.slug}`}>Read Issue No. 001</Link>
+          <Link className="button secondary" href="#letter-archive">View Archive</Link>
+        </div>
+      </div>
+      <aside className="featured-issue-note">
+        <p className="card-eyebrow">Editor’s note</p>
+        <p>{featuredLetter.editorialNote}</p>
+      </aside>
+    </section>
+  );
+}
+
+export function EditorsNoteBlock() {
+  return (
+    <section className="issue-note-grid" aria-label="Publication notes from chambers">
+      <article className="issue-note-card">
+        <p className="eyebrow">{editorialNoteFromChambers.title}</p>
+        <p>{editorialNoteFromChambers.body}</p>
+      </article>
+      <article className="issue-note-card rhythm-card">
+        <p className="eyebrow">{publicationRhythm.title}</p>
+        <p>{publicationRhythm.body}</p>
+      </article>
+    </section>
+  );
+}
+
 export function LetterCards({ limit }: { limit?: number }) {
   const list = typeof limit === "number" ? sampleLetters.slice(0, limit) : sampleLetters;
 
@@ -23,7 +77,11 @@ export function LetterCards({ limit }: { limit?: number }) {
         <Link className="letter-card linked-card" href={`/letters-from-chambers/${letter.slug}`} key={letter.slug}>
           <article>
             <div>
-              <p className="letter-meta">{letter.category} · {letter.readTime}</p>
+              <div className="letter-card-topline">
+                <span>{letter.issueNumber}</span>
+                <span>{letter.category}</span>
+              </div>
+              <p className="letter-meta">{letter.publicationStatus} · {letter.readTime}</p>
               <h3>{letter.title}</h3>
               <p>{letter.excerpt}</p>
             </div>
@@ -83,9 +141,14 @@ export function LettersHomeSection() {
         <p className="large-copy">{lettersBrand.subtitle}</p>
         <p>{lettersBrand.summary}</p>
         <p className="architecture-line">{lettersBrand.architecture}</p>
+        <div className="mini-issue-strip" aria-label="Latest issue summary">
+          <span>{featuredLetter.issueNumber}</span>
+          <strong>{featuredLetter.title}</strong>
+          <small>{featuredLetter.publicationStatus}</small>
+        </div>
         <div className="hero-actions">
           <Link className="button primary" href="/letters-from-chambers">Enter Letters from Chambers</Link>
-          <Link className="button secondary" href={`/letters-from-chambers/${sampleLetters[0].slug}`}>Read latest letter</Link>
+          <Link className="button secondary" href={`/letters-from-chambers/${featuredLetter.slug}`}>Read latest letter</Link>
         </div>
       </div>
       <aside className="letters-home-card" aria-label="Letters from Chambers identity note">

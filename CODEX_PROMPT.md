@@ -91,3 +91,19 @@ Every letter page should keep this note:
 - Preserve Scholar in Chambers as the main intellectual house.
 - Do not rename the website to Letters from Chambers.
 - Keep Letters from Chambers visibly connected to Scholar in Chambers and the Paul Magaji brand.
+
+---
+
+## Upgrade Record: Letters from Chambers Publication & Issue System
+
+The site now supports a serious publication structure for Letters from Chambers:
+
+- Issue No. 001 and following
+- Featured issue
+- Editorial notes
+- Publication rhythm
+- Visual archive filters
+- Dynamic citation footer
+- Individual issue pages under `/letters-from-chambers/[slug]`
+
+Future upgrades should preserve the chamber-like tone and avoid turning the site into a casual blog or flashy marketing website.

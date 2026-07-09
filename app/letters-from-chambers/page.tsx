@@ -1,5 +1,13 @@
 import Link from "next/link";
-import { CategoryCards, ChamberVerticalCards, LetterCards, NewsletterSignup } from "@/components/Letters";
+import {
+  ArchiveFilterRow,
+  CategoryCards,
+  ChamberVerticalCards,
+  EditorsNoteBlock,
+  FeaturedIssue,
+  LetterCards,
+  NewsletterSignup,
+} from "@/components/Letters";
 import { SectionHeading } from "@/components/SectionHeading";
 import { lettersBrand, sampleLetters } from "@/lib/content";
 
@@ -24,6 +32,10 @@ export default function LettersFromChambersPage() {
           <Link className="button secondary" href="#subscribe">Subscribe to Letters</Link>
         </div>
       </div>
+
+      <FeaturedIssue />
+
+      <EditorsNoteBlock />
 
       <section className="letters-definition-section">
         <SectionHeading eyebrow="What it is" title="The lawyer as correspondent">
@@ -61,16 +73,17 @@ export default function LettersFromChambersPage() {
       <NewsletterSignup />
 
       <section className="content-section">
-        <SectionHeading eyebrow="Letter categories" title="The first shelves of the correspondence archive">
+        <SectionHeading eyebrow="Letter categories" title="Series structure">
           These categories keep the newsletter serious, searchable, and expandable without turning it into a scattered blog.
         </SectionHeading>
         <CategoryCards />
       </section>
 
-      <section className="content-section">
+      <section className="content-section archive-section">
         <SectionHeading eyebrow="Archive" title="Latest Letters from Chambers">
-          The first body of public correspondence from chambers, each prepared as a serious legal-intellectual letter.
+          The first body of public correspondence from chambers, each prepared as a serious legal-intellectual issue with continuity, category, and citation.
         </SectionHeading>
+        <ArchiveFilterRow />
         <LetterCards />
       </section>
 

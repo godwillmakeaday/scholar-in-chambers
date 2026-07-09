@@ -59,3 +59,22 @@ Vercel should redeploy automatically.
 ## Brand principle
 
 Scholar in Chambers gives depth. Letters from Chambers gives continuity. Specialist Chambers gives expansion.
+
+## Scholar in Chambers 2.2 — Letters Publication & Issue System
+
+This upgrade turns **Letters from Chambers** into a more formal legal-intellectual publication layer.
+
+Added features:
+
+- Issue-number support in `lib/letters.ts`
+- Featured latest issue on `/letters-from-chambers`
+- Editor’s Note from Chambers
+- Publication Rhythm block
+- Visual archive filter row
+- Issue metadata on individual letter pages
+- Author line: `From the desk of Paul Magaji`
+- Print / Share / Save placeholder actions
+- Dynamic suggested citation footer
+- Stronger correspondence archive cards
+
+The site still preserves **Scholar in Chambers** as the main intellectual house. **Letters from Chambers** remains the recurring public correspondence/newsletter arm.

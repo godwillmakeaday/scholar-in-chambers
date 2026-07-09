@@ -1,7 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { NewsletterSignup } from "@/components/Letters";
-import { getAdjacentLetters, getLetterBySlug, letters, editorialDisclaimer } from "@/lib/letters";
+import {
+  editorialDisclaimer,
+  getAdjacentLetters,
+  getLetterBySlug,
+  getSuggestedCitation,
+  letters,
+} from "@/lib/letters";
 
 export async function generateStaticParams() {
   return letters.map((letter) => ({ slug: letter.slug }));
@@ -32,6 +38,7 @@ export default async function LetterPage({ params }: { params: Promise<{ slug: s
   }
 
   const { previous, next } = getAdjacentLetters(slug);
+  const citation = getSuggestedCitation(letter);
 
   return (
     <article className="page-section letter-detail-page">
@@ -40,19 +47,34 @@ export default async function LetterPage({ params }: { params: Promise<{ slug: s
         <span>/</span>
         <Link href="/letters-from-chambers">Letters from Chambers</Link>
         <span>/</span>
-        <span>{letter.category}</span>
+        <span>{letter.issueNumber}</span>
       </nav>
 
-      <header className="letter-detail-hero">
-        <p className="eyebrow">{letter.category}</p>
+      <header className="letter-detail-hero issue-hero">
+        <div className="issue-label-row hero-issue-labels">
+          <span>{letter.issueNumber}</span>
+          <span>{letter.category}</span>
+          <span>{letter.publicationStatus}</span>
+        </div>
+        <p className="eyebrow">{letter.publicationType}</p>
         <h1>{letter.title}</h1>
         <p className="letter-detail-excerpt">{letter.excerpt}</p>
         <div className="letter-detail-meta">
+          <span>{letter.authorLine}</span>
           <span>{letter.date}</span>
           <span>{letter.readTime}</span>
-          <span>Public correspondence</span>
+        </div>
+        <div className="letter-action-row" aria-label="Letter actions">
+          <button type="button">Print Letter</button>
+          <button type="button">Share Letter</button>
+          <button type="button">Save for Later</button>
         </div>
       </header>
+
+      <section className="letter-editorial-intro">
+        <p className="eyebrow">Editorial note</p>
+        <p>{letter.editorialNote}</p>
+      </section>
 
       <section className="letter-body-card">
         <p className="letter-salutation">{letter.salutation}</p>
@@ -68,8 +90,13 @@ export default async function LetterPage({ params }: { params: Promise<{ slug: s
       </section>
 
       <section className="editorial-note letter-editorial-note">
-        <p className="eyebrow">Editorial note</p>
+        <p className="eyebrow">Public legal education disclaimer</p>
         <p>{editorialDisclaimer}</p>
+      </section>
+
+      <section className="citation-card">
+        <p className="eyebrow">Suggested citation</p>
+        <p>{citation}</p>
       </section>
 
       <NewsletterSignup />

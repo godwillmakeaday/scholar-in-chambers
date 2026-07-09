@@ -2,6 +2,12 @@ export type Letter = {
   title: string;
   slug: string;
   category: string;
+  issueNumber: string;
+  publicationStatus: "Featured" | "Published" | "Scheduled" | "Coming Soon";
+  publicationType: string;
+  authorLine: string;
+  editorialNote: string;
+  featured?: boolean;
   excerpt: string;
   date: string;
   readTime: string;
@@ -20,6 +26,13 @@ export const letters: Letter[] = [
   {
     title: "Letter to the Citizen Facing a Police Invitation",
     slug: "letter-to-the-citizen-facing-a-police-invitation",
+    issueNumber: "Issue No. 001",
+    publicationStatus: "Featured",
+    publicationType: "Public Legal Education",
+    authorLine: "From the desk of Paul Magaji",
+    editorialNote:
+      "The first issue begins with a practical public anxiety: what a citizen should do when authority calls, fear rises, and careless words may become dangerous record.",
+    featured: true,
     category: "Citizens’ Legal Notes",
     excerpt:
       "A calm note on fear, preparation, documentation, dignity, and the wisdom of seeking proper legal guidance before a small issue becomes a larger danger.",
@@ -54,6 +67,12 @@ export const letters: Letter[] = [
   {
     title: "Letter to the Business Owner Who Signs Without Reading",
     slug: "letter-to-the-business-owner-who-signs-without-reading",
+    issueNumber: "Issue No. 002",
+    publicationStatus: "Published",
+    publicationType: "Business Legal Education",
+    authorLine: "From the desk of Paul Magaji",
+    editorialNote:
+      "This issue treats the signature as a serious act of commercial judgment, not a routine mark at the end of a document.",
     category: "Business & Contracts",
     excerpt:
       "A warning from chambers on signatures, obligations, clauses, informal trust, and the hidden cost of treating documents as a formality.",
@@ -88,6 +107,12 @@ export const letters: Letter[] = [
   {
     title: "Letter to the Young Lawyer Learning Judgment",
     slug: "letter-to-the-young-lawyer-learning-judgment",
+    issueNumber: "Issue No. 003",
+    publicationStatus: "Published",
+    publicationType: "Professional Formation",
+    authorLine: "From the desk of Paul Magaji",
+    editorialNote:
+      "This issue is addressed to the young lawyer who must learn that professional value is not only knowledge of rules, but disciplined judgment under pressure.",
     category: "Young Lawyers",
     excerpt:
       "A reflection on the difference between knowing law, sounding legal, reading people, preserving credibility, and exercising disciplined judgment.",
@@ -122,6 +147,12 @@ export const letters: Letter[] = [
   {
     title: "Letter to the Family Holding Land Without Records",
     slug: "letter-to-the-family-holding-land-without-records",
+    issueNumber: "Issue No. 004",
+    publicationStatus: "Published",
+    publicationType: "Property and Family Records",
+    authorLine: "From the desk of Paul Magaji",
+    editorialNote:
+      "This issue asks families to convert oral memory into responsible record before conflict turns inheritance into confusion.",
     category: "Land & Property",
     excerpt:
       "A practical public note on memory, boundaries, witnesses, succession, family meetings, and the tragedy of undocumented ownership.",
@@ -156,6 +187,12 @@ export const letters: Letter[] = [
   {
     title: "Letter to the Public Officer and the Burden of Power",
     slug: "letter-to-the-public-officer-and-the-burden-of-power",
+    issueNumber: "Issue No. 005",
+    publicationStatus: "Published",
+    publicationType: "Governance and Public Order",
+    authorLine: "From the desk of Paul Magaji",
+    editorialNote:
+      "This issue reflects on public authority as a burden of restraint, documentation, dignity, and answerability.",
     category: "Governance & Public Order",
     excerpt:
       "A chamber reflection on authority as responsibility, public office as restraint, and power as something that must answer to dignity.",
@@ -190,6 +227,12 @@ export const letters: Letter[] = [
   {
     title: "Letter to the Client Who Thinks Law Begins in Court",
     slug: "letter-to-the-client-who-thinks-law-begins-in-court",
+    issueNumber: "Issue No. 006",
+    publicationStatus: "Published",
+    publicationType: "Law and Society",
+    authorLine: "From the desk of Paul Magaji",
+    editorialNote:
+      "This issue explains why legal wisdom should begin before crisis, before court, and before preventable disorder hardens into litigation.",
     category: "Law & Society",
     excerpt:
       "An explanation of prevention, records, negotiation, correspondence, documentation, and why court is often the late stage of legal life.",
@@ -222,6 +265,33 @@ export const letters: Letter[] = [
     ],
   },
 ];
+
+export const archiveFilters = [
+  "All Letters",
+  "Citizens’ Legal Notes",
+  "Business & Contracts",
+  "Young Lawyers",
+  "Land & Property",
+  "Governance & Public Order",
+];
+
+export const editorialNoteFromChambers = {
+  title: "Editor’s Note from Chambers",
+  body:
+    "Letters from Chambers is arranged as a continuing public record, not a set of isolated posts. Each issue takes one recurring legal, civic, professional, or institutional problem and turns it into correspondence: readable enough for the public, disciplined enough to preserve the seriousness of chambers.",
+};
+
+export const publicationRhythm = {
+  title: "Publication Rhythm",
+  body:
+    "Letters may be published monthly, periodically, or whenever serious public issues require legal reflection. The rhythm is not speed for its own sake; it is continuity with judgment, so that each letter adds to an archive of public legal education and institutional memory.",
+};
+
+export const featuredLetter = letters.find((letter) => letter.featured) ?? letters[0];
+
+export function getSuggestedCitation(letter: Letter) {
+  return `Paul Magaji, “${letter.title},” Letters from Chambers, ${letter.issueNumber}.`;
+}
 
 export function getLetterBySlug(slug: string) {
   return letters.find((letter) => letter.slug === slug);
